@@ -55,34 +55,34 @@ public class GameManager : MonoBehaviour {
 
 	public void HurtP1()
 	{
-		P1Life -= 1;
+		//P1Life -= 1;
 
-		for(int i = 0; i < p1Sticks.Length; i++)
-		{
-			if(P1Life > i)
-			{
-				p1Sticks[i].SetActive(true);
-			} else {
-				p1Sticks[i].SetActive(false);
-			}
-		}
+		//for(int i = 0; i < p1Sticks.Length; i++)
+		//{
+		//	if(P1Life > i)
+		//	{
+		//		p1Sticks[i].SetActive(true);
+		//	} else {
+		//		p1Sticks[i].SetActive(false);
+		//	}
+		//}
 
 		hurtSound.Play();
 	}
 
 	public void HurtP2()
 	{
-		P2Life -= 1;
+		//P2Life -= 1;
 
-		for(int i = 0; i < p2Sticks.Length; i++)
-		{
-			if(P2Life > i)
-			{
-				p2Sticks[i].SetActive(true);
-			} else {
-				p2Sticks[i].SetActive(false);
-			}
-		}
+		//for(int i = 0; i < p2Sticks.Length; i++)
+		//{
+		//	if(P2Life > i)
+		//	{
+		//		p2Sticks[i].SetActive(true);
+		//	} else {
+		//		p2Sticks[i].SetActive(false);
+		//	}
+		//}
 
 		hurtSound.Play();
 	}
