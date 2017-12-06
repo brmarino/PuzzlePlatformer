@@ -15,7 +15,7 @@ public class PlayerFollow : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // Set Player1 to the currently active player
-        ActivePlayer = 1;	
+        ActivePlayer = 1;
 	}
 	
 	// Update is called once per frame
@@ -40,6 +40,7 @@ public class PlayerFollow : MonoBehaviour {
             Vector3 newPosition = transform.position;
             newPosition.x = Player1.position.x;
             newPosition.y = Player1.position.y;
+            newPosition.y += 2.0f;
             transform.position = newPosition;
         }
         else
@@ -47,6 +48,7 @@ public class PlayerFollow : MonoBehaviour {
             Vector3 newPosition = transform.position;
             newPosition.x = Player2.position.x;
             newPosition.y = Player2.position.y;
+            newPosition.y += 2.0f;
             transform.position = newPosition;
         }
 
