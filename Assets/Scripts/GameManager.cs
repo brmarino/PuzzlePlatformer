@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
 	public GameObject player1;
 	public GameObject player2;
+	public static int count;
 
 	public int P1Life;
 	public int P2Life;
+	public Text countText;          //Store a reference to the UI Text component which will display the number of pickups collected.
+	public Text winText;   
 
 	public GameObject p1Wins;
 	public GameObject p2Wins;
@@ -24,7 +28,9 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 
 	void Start () {
-		
+		count = 0;
+		winText.text = "";
+
 	}
 
 	// Update is called once per frame
@@ -86,4 +92,17 @@ public class GameManager : MonoBehaviour {
 
 		hurtSound.Play();
 	}
+
+public void SetCountText()
+{
+	//Set the text property of our our countText object to "Count: " followed by the number stored in our count variable.
+	countText.text = "Count: " + count.ToString ();
+
+	//Check if we've collected all 12 pickups. If we have...
+	if (count >= 3){
+		//... then set the text property of our winText object to "You win!"
+		winText.text = "You win!";
+		SceneManager.LoadScene("MenuScreen");
+	}
+}
 }
