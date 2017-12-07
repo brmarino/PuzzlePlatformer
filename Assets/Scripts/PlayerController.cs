@@ -8,15 +8,15 @@ public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
 	public float jumpForce;
-	public Text countText;          //Store a reference to the UI Text component which will display the number of pickups collected.
-	public Text winText;            //Store a reference to the UI Text component which will display the 'You win' message.
-	private int count;              //Integer to store the number of pickups collected so far.
+	         //Store a reference to the UI Text component which will display the 'You win' message.
+	              //Integer to store the number of pickups collected so far.
 
 
 	public KeyCode left;
 	public KeyCode right;
 	public KeyCode jump;
 	public KeyCode throwBall;
+	public Canvas canvas;
 
 	private Rigidbody2D theRB;
 
@@ -36,13 +36,10 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		theRB = GetComponent<Rigidbody2D>();
-		count = 0;
 		anim = GetComponent<Animator>();
 		//Initialze winText to a blank string since we haven't won yet at beginning.
-		winText.text = "";
 
 		//Call our SetCountText function which will update the text with the current value for count.
-		SetCountText ();
 	}
 	
 	// Update is called once per frame
@@ -94,24 +91,10 @@ public class PlayerController : MonoBehaviour {
 			other.gameObject.SetActive(false);
 
 		//Add one to the current value of our count variable.
-		count = count + 1;
-
+		GameManager.count += 1;
+		FindObjectOfType<GameManager> ().SetCountText ();
 		//Update the currently displayed count by calling the SetCountText function.
-		SetCountText ();
 	}
 
 	//This function updates the text displaying the number of objects we've collected and displays our victory message if we've collected all of them.
-	void SetCountText()
-	{
-		//Set the text property of our our countText object to "Count: " followed by the number stored in our count variable.
-		countText.text = "Count: " + count.ToString ();
-
-		//Check if we've collected all 12 pickups. If we have...
-		if (count >= 3){
-			//... then set the text property of our winText object to "You win!"
-			winText.text = "You win!";
-			SceneManager.LoadScene("MenuScreen");
-
-	}
-}
 }
